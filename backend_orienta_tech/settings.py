@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -86,6 +87,11 @@ DATABASES = {
 }
 database_url = os.environ.get('DATABASE_URL')
 DATABASES['default'] = dj_database_url.parse(database_url)
+
+# django-insecure-mmu=o*a@vp6(6h*v@dz8tqejv(s-z4#esxxy9-z1zaj((q0bn%
+# postgres://orientatech_user:Jy7ue8YQ3qiqA4VuZP9dcvHw5hVfBO9b@dpg-cnes1qmn7f5s73e2o4r0-a.oregon-postgres.render.com/orientatech
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
