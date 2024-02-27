@@ -29,13 +29,11 @@ def submit_cuestionario(request):
         except json.JSONDecodeError as e:
             logger.error("Error al decodificar JSON: %s", str(e))
             return HttpResponseBadRequest("Error en el formato JSON: " + str(e))
-    elif request.method == 'GET':
-        try:
-            respuestas = Respuesta.objects.all()
-            return JsonResponse({'respuestas': [{'pregunta': respuesta.pregunta, 'respuesta': respuesta.respuesta} for respuesta in respuestas]})
-        except Exception as e:
-            logger.error("Error al obtener las respuestas: %s", str(e))
-            return HttpResponseBadRequest("Error al obtener las respuestas: " + str(e))
+    elif request.method == "GET":
+        response_data = {
+            "message": "Hola. Has realizado una solicitud GET a la página de inicio."
+        }
+        return JsonResponse(response_data)
     else:
         logger.warning("Método no soportado %s", request.method)
         return HttpResponseBadRequest('Método no soportado')
