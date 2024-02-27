@@ -14,6 +14,7 @@ modelo = joblib.load('model/entrenamiento_estudiantes.pkl')
 
 @csrf_exempt
 def submit_cuestionario(request):
+    # print(request)
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
