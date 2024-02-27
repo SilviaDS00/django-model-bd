@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-mmu=o*a@vp6(6h*v@dz8tqejv(s-z4#esxxy9-z1zaj((q0bn%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'https://orientatech-iabd.netlify.app/', 'orientatech-iabd.netlify.app/']
 
 
 # Application definition
