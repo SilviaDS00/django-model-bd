@@ -1,2 +1,5 @@
 django-cors-headers
 joblib
+django
+gunicorn
+scikit-learn
