@@ -22,13 +22,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-mmu=o*a@vp6(6h*v@dz8tqejv(s-z4#esxxy9-z1zaj((q0bn%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False').lower() == 'True'
+DEBUG = 'RENDER' not in os.environ
 
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
+ALLOWED_HOSTS = []
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
 
 # Application definition
 
@@ -85,12 +90,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'respuestas.db',
     }
 }
-database_url = os.environ.get('DATABASE_URL')
-DATABASES['default'] = dj_database_url.parse(database_url)
 
-# django-insecure-mmu=o*a@vp6(6h*v@dz8tqejv(s-z4#esxxy9-z1zaj((q0bn%
-# postgres://orientatech_user:Jy7ue8YQ3qiqA4VuZP9dcvHw5hVfBO9b@dpg-cnes1qmn7f5s73e2o4r0-a.oregon-postgres.render.com/orientatech
-
+DATABASES['default'] = dj_database_url.parse("postgres://orientatech_user:Jy7ue8YQ3qiqA4VuZP9dcvHw5hVfBO9b@dpg-cnes1qmn7f5s73e2o4r0-a.oregon-postgres.render.com/orientatech")
 
 
 # Password validation
